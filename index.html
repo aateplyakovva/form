@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">Create account</div>
+        <form id="form" class="form">
+            <div class="form-control">
+                <input type="text" placeholder="Username" id="username" required>
+            </div>
+            <div class="form-control">
+                <input type="email" placeholder="Email" id="email" required>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <input type="password" placeholder="Password" id="password" required>
+            </div>
+            <div class="form-control">
+                <input type="password" placeholder="Confirm password" id="password2" required>
+                <small>Error message</small>
+            </div>
+            <input id="submit" name="submit" type="submit" class = "form-button" value="Create"></input>
+        </form>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

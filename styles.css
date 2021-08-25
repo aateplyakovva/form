@@ -1,0 +1,103 @@
+
+* {
+	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+	background: rgb(159,165,213);
+background: linear-gradient(0deg, rgba(159,165,213,1) 10%, rgba(232,245,200,1) 96%);
+    font-family: 'Open Sans', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	margin: 0;
+}
+body,
+input{
+    font-family: 'Poppins', sans-serif;
+}
+.wrapper {
+    color: #fff;
+	border-radius: 5px;
+	overflow: hidden;
+	width: 300px;
+	max-width: 100%;
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.form-control {
+	padding-bottom: 25px;
+	position: relative;
+}
+.form-control input {
+	display: block;
+	font-size: 14px;
+	width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(66%, 51%, 35%, 0.1);
+    padding-left: 15px;
+    outline: none;
+    color: #fff;
+}
+.form-control input::placeholder{
+    color: #fff;
+}
+
+.form-control.success input {
+	background-color: #2ecc71;
+}
+
+.form-control.error input {
+    background-color: red;
+}
+
+
+.form-control small {
+	color: red;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.form-control.error small {
+	visibility: visible;
+}
+
+#submit {
+    background-color: transparent;
+	color: #fff;
+	display: block;
+	margin-top: 20px;
+	width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 1.0s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+}
+#submit:hover{
+    background-color: #9b9b9b;
+}
+#message{
+    font-size: 25px;
+}
