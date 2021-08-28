@@ -1,103 +1,138 @@
-
-* {
-	box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+:root {
+    --color-input: rgb(66%, 51%, 35%, 0.1);
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 0.9375rem;
+    --font-size: 0.9rem;
+    --accent-color: #686767;
 }
 
 body {
-	background: rgb(159,165,213);
-background: linear-gradient(0deg, rgba(159,165,213,1) 10%, rgba(232,245,200,1) 96%);
-    font-family: 'Open Sans', sans-serif;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
-	margin: 0;
-}
-body,
-input{
-    font-family: 'Poppins', sans-serif;
-}
-.wrapper {
-    color: #fff;
-	border-radius: 5px;
-	overflow: hidden;
-	width: 300px;
-	max-width: 100%;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    background: rgb(159, 165, 213);
+    background: linear-gradient(0deg, rgba(159, 165, 213, 1) 10%, rgba(232, 245, 200, 1) 96%);
 }
 
-.title {
+body,
+input,
+button {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 350px;
+    max-width: 350px;
+    color: #fff;
+}
+
+
+.form-hidden {
+    display: none;
+}
+
+.form__title {
     text-align: center;
     text-transform: uppercase;
     font-weight: 600;
     color: #fff;
     letter-spacing: 0.1em;
-    margin-bottom: 20px;
-    font-size: 28px;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
 }
 
-.form-control {
-	padding-bottom: 25px;
-	position: relative;
+.form__message {
+    text-align: center;
+    margin-bottom: 1rem;
 }
-.form-control input {
-	display: block;
-	font-size: 14px;
-	width: 100%;
-    padding: 10px;
-    border-radius: 15px;
+
+.form__message-success {
+    color: var(--color-success);
+}
+
+.form__message-error {
+    color: var(--color-error);
+}
+
+.form> :first-child {
+    margin-top: 0;
+}
+
+.form> :last-child {
+    margin-bottom: 0;
+}
+
+.form__input-group {
+    margin-bottom: 1.5rem;
+}
+
+.form__input {
+    display: block;
+    box-sizing: border-box;
+    font-size: var(--font-size);
+    width: 100%;
+    padding: 10px 10px 10px 15px;
+    border-radius: var(--border-radius);
     border: none;
-    background-color: rgb(66%, 51%, 35%, 0.1);
-    padding-left: 15px;
+    background-color: var(--color-input);
     outline: none;
     color: #fff;
 }
-.form-control input::placeholder{
+
+.form__input::placeholder {
     color: #fff;
 }
 
-.form-control.success input {
-	background-color: #2ecc71;
+.form__input:focus {
+    background-color: rgba(178, 185, 235, 0.548);
 }
 
-.form-control.error input {
-    background-color: red;
+.form__input-error {
+    background-color: var(--color-error);
 }
 
-
-.form-control small {
-	color: red;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	visibility: hidden;
+.form__input-error-message {
+    color: var(--color-error);
 }
 
-.form-control.error small {
-	visibility: visible;
-}
-
-#submit {
+.form__button {
     background-color: transparent;
-	color: #fff;
-	display: block;
-	margin-top: 20px;
-	width: 100%;
-    padding: 10px;
-    border-radius: 15px;
-    border: 1px solid #fff;
     color: #fff;
-    font-size: 12px;
-    cursor: pointer;
-    transition: 1.0s ease;
-    text-transform: uppercase;
+    width: 100%;
+    padding: 0.9375rem;
     font-weight: 600;
-    font-size: 13px;
+    font-size: var(--font-size);
+    border: 1px solid #fff;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    margin-top: 0.9375rem;
+    cursor: pointer;
+    outline: none;
 }
-#submit:hover{
-    background-color: #9b9b9b;
+
+.form__button:hover {
+    background-color: var(--accent-color);
 }
-#message{
-    font-size: 25px;
+
+.form__button:active {
+    transform: scale(.98);
 }
+
+.form__text {
+    text-align: center;
+}
+
+.form__link {
+    color: var(--accent-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form__link:hover {
+    text-decoration: underline;
+}
+

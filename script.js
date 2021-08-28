@@ -1,76 +1,68 @@
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const password2 = document.getElementById('password2');
-const submit = document.getElementById('submit');
-const message = document.getElementById('message');
-const formInputs = form.querySelectorAll("input");
-const formcontrol = document.getElementsByClassName('form-control');
-const data = [];
+function setFormMessage(formElement, type, message) {
+  const messageElement = formElement.querySelector('.form__message');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  checkInputs();
-  const username = document.querySelector("#username").value;
-  const email = document.querySelector("#email").value;
-  const password = document.querySelector("#password").value;
-  data.push({
-    username: username,
-    email: email,
-    password: password,
-  });
-  console.log(data);
-  formInputs.forEach((input) => {
-    if (input.type !== "submit") {
-      input.value = "";
-      const formControl = input.parentElement;
-      formControl.classList.remove('success');
-    }
-  });
-});
-
-
-function checkInputs() {
-  const usernameValue = username.value.trim();
-  const emailValue = email.value.trim();
-  const passwordValue = password.value.trim();
-  const password2Value = password2.value.trim();
-
-  if (usernameValue !== '') {
-    setSuccessFor(username);
-  }
-
-  if (!isEmail(emailValue)) {
-    setErrorFor(email, 'Not a valid email');
-  } else {
-    setSuccessFor(email);
-  }
-
-  if (passwordValue !== '') {
-    setSuccessFor(password);
-  }
-
-  if (passwordValue !== password2Value) {
-    setErrorFor(password2, 'Passwords do not match');
-
-  } else {
-    setSuccessFor(password2);
-  }
+  messageElement.textContent = message;
+  messageElement.classList.remove('form__message-success', 'form__message-error');
+  messageElement.classList.add(`form__message-${type}`);
 }
 
-function setErrorFor(input, message) {
-  const formControl = input.parentElement;
-  const small = formControl.querySelector('small');
-  formControl.classList.add('form-control', 'error');
-  small.innerText = message;
+function setInputError(inputElement, message) {
+  inputElement.classList.add('form__input-error');
+  inputElement.parentElement.querySelector('.form__input-error-message').textContent = message;
 }
 
-function setSuccessFor(input) {
-  const formControl = input.parentElement;
-  formControl.classList.add('form-control', 'success');
+function clearInputError(inputElement) {
+  inputElement.classList.remove('form__input-error');
+  inputElement.parentElement.querySelector('.form__input-error-message').textContent = "";
 }
 
 function isEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.querySelector('#login');
+  const createAccountForm = document.querySelector('#createAccount');
+
+  document.querySelector('#linkCreateAccount').addEventListener('click', (e) => {
+    e.preventDefault();
+    loginForm.classList.add('form-hidden');
+    createAccountForm.classList.remove('form-hidden');
+  });
+
+  document.querySelector('#linkLogin').addEventListener('click', (e) => {
+    e.preventDefault();
+    loginForm.classList.remove('form-hidden');
+    createAccountForm.classList.add('form-hidden');
+  });
+
+  loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // perform ajax/fetch login
+
+    setFormMessage(loginForm, 'error', "Invalid username/password combination");
+  });
+  
+
+  document.querySelectorAll('.form__input').forEach(inputElement => {
+    const secondPassword = document.querySelector('#signupPasswordSecons');
+    inputElement.addEventListener('blur', e => {
+      if (e.target.id === 'signupUsername' && e.target.value.length > 0 && e.target.value.length < 8) {
+        setInputError(inputElement, 'User must be at least 8 characters in length');
+      } else if (e.target.id === 'signupEmail' && !isEmail()) {
+        setInputError(inputElement, 'Not a valid email');
+      } else if (e.target.id === 'signupPasswordFirst' && e.target.value.length < 6) {
+        setInputError(inputElement, 'Password must be at least 6 characters in length');
+      } else if (e.target.id === 'signupPasswordFirst' && !secondPassword) {
+        setInputError(inputElement, 'Passwords do not match');
+      }
+    });
+    inputElement.addEventListener('input', e => {
+      clearInputError(inputElement);
+    });
+  });
+
+});
+
+

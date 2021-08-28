@@ -1,35 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Login / Sign up form</title>
 </head>
+
 <body>
-    <div class="wrapper">
-        <div class="title">Create account</div>
-        <form id="form" class="form">
-            <div class="form-control">
-                <input type="text" placeholder="Username" id="username" required>
+    <div class="container">
+        <form class="form" id="login">
+            <h1 class="form__title">Login</h1>
+            <div class="form__message form__message-error"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Username or email">
+                <small class="form__input-error-message"></small>
             </div>
-            <div class="form-control">
-                <input type="email" placeholder="Email" id="email" required>
-                <small>Error message</small>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Password">
+                <small class="form__input-error-message"></small>
             </div>
-            <div class="form-control">
-                <input type="password" placeholder="Password" id="password" required>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a href="#" class="form__link">Forgot your password?</a>
+            </p>
+            <p class="form__text">
+                <a href="./" class="form__link" id="linkCreateAccount">Don't have an account? <br> Create account</a>
+            </p>
+        </form>
+
+        <form class="form form-hidden" id="createAccount">
+            <h1 class="form__title">Create Account</h1>
+            <div class="form__message form__message-success"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" id="signupUsername" autofocus placeholder="Username">
+                <small class="form__input-error-message"></small>
             </div>
-            <div class="form-control">
-                <input type="password" placeholder="Confirm password" id="password2" required>
-                <small>Error message</small>
+            <div class="form__input-group">
+                <input type="email" class="form__input" id="signupEmail" autofocus placeholder="Email">
+                <small class="form__input-error-message"></small>
             </div>
-            <input id="submit" name="submit" type="submit" class = "form-button" value="Create"></input>
+            <div class="form__input-group">
+                <input type="password" class="form__input" id="signupPasswordFirst" autofocus placeholder="Password">
+                <small class="form__input-error-message"></small>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" id="signupPasswordSecond" autofocus
+                    placeholder="Confirm password">
+                <small class="form__input-error-message"></small>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a href="./" class="form__link" id="linkLogin">Already have an account? Sign in</a>
+            </p>
         </form>
     </div>
-    <script src="./script.js"></script>
+
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>
+
